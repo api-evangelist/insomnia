@@ -29,6 +29,33 @@ apis:
       CI/CD integration, cloud-hosted and self-hosted mock servers, OpenAPI
       spec design tools, and collaborative features with cloud sync, local
       vault, and Git storage options.
+  - aid: insomnia:mock-server-api
+    name: Insomnia Mock Server API
+    tags:
+      - Mocking
+      - Testing
+      - API Design
+    humanURL: https://docs.insomnia.rest/insomnia/api-mocking/
+    properties:
+      - url: https://docs.insomnia.rest/insomnia/api-mocking/
+        type: Documentation
+      - url: openapi/insomnia-mock-server-openapi.yml
+        type: OpenAPI
+      - url: json-schema/workspace.json
+        type: JSONSchema
+      - url: json-schema/request.json
+        type: JSONSchema
+      - url: json-schema/environment.json
+        type: JSONSchema
+      - url: json-ld/insomnia-context.jsonld
+        type: JSONLD
+    description: >-
+      The Insomnia Mock Server API allows developers to create, manage, and
+      interact with mock servers powered by Insomnia (Kong). Mock servers
+      simulate API endpoints by returning predefined responses based on
+      OpenAPI specifications or custom route configurations, enabling teams
+      to develop and test against realistic API behavior before the actual
+      implementation is complete.
 name: Insomnia
 tags:
   - Clients

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/insomnia/refs/heads/main/json-schema/environment.json",
+  "title": "Insomnia Environment",
+  "description": "An Insomnia environment stores key-value pairs of variables that can be referenced in requests using template tags. Environments allow switching between different configurations such as development, staging, and production without modifying individual requests.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for the environment, typically prefixed with env_."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the environment (e.g., Development, Staging, Production)."
+    },
+    "data": {
+      "type": "object",
+      "description": "Key-value pairs of environment variables available for template tag substitution in requests.",
+      "additionalProperties": {
+        "description": "Environment variable value, which can be a string, number, boolean, object, or array."
+      }
+    },
+    "dataPropertyOrder": {
+      "type": ["object", "null"],
+      "description": "Defines the display order of data properties in the UI.",
+      "properties": {
+        "&": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ordered list of property keys."
+        }
+      }
+    },
+    "color": {
+      "type": ["string", "null"],
+      "description": "Optional color code for visual identification of the environment in the UI."
+    },
+    "parentId": {
+      "type": "string",
+      "description": "Identifier of the parent workspace or base environment."
+    },
+    "metaSortKey": {
+      "type": "integer",
+      "description": "Sort key used for ordering environments in the UI."
+    },
+    "isPrivate": {
+      "type": "boolean",
+      "description": "Whether the environment is private and excluded from cloud sync and Git storage. Useful for storing secrets locally.",
+      "default": false
+    },
+    "created": {
+      "type": "integer",
+      "description": "Unix timestamp in milliseconds when the environment was created."
+    },
+    "modified": {
+      "type": "integer",
+      "description": "Unix timestamp in milliseconds when the environment was last modified."
+    },
+    "_type": {
+      "type": "string",
+      "const": "environment",
+      "description": "The resource type identifier."
+    }
+  },
+  "required": ["_id", "name", "data", "parentId", "_type"],
+  "additionalProperties": true
+}

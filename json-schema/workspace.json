@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/insomnia/refs/heads/main/json-schema/workspace.json",
+  "title": "Insomnia Workspace",
+  "description": "An Insomnia workspace is the top-level organizational unit that groups related API requests, environments, mock servers, and design specifications. Workspaces can represent a Design Document for API design or a Collection for request organization.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for the workspace, typically prefixed with wrk_."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the workspace."
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description providing context about the workspace purpose."
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["design", "collection"],
+      "description": "The workspace scope: design for API specification design, collection for request organization."
+    },
+    "parentId": {
+      "type": ["string", "null"],
+      "description": "Identifier of the parent project or organization."
+    },
+    "created": {
+      "type": "integer",
+      "description": "Unix timestamp in milliseconds when the workspace was created."
+    },
+    "modified": {
+      "type": "integer",
+      "description": "Unix timestamp in milliseconds when the workspace was last modified."
+    },
+    "isPrivate": {
+      "type": "boolean",
+      "description": "Whether the workspace is private and not shared with team members.",
+      "default": false
+    },
+    "_type": {
+      "type": "string",
+      "const": "workspace",
+      "description": "The resource type identifier."
+    }
+  },
+  "required": ["_id", "name", "scope", "_type"],
+  "additionalProperties": true
+}

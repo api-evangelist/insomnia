@@ -1,0 +1,494 @@
+openapi: 3.1.0
+info:
+  title: Insomnia Mock Server API
+  description: >-
+    The Insomnia Mock Server API allows developers to create, manage, and
+    interact with mock servers powered by Insomnia (Kong). Mock servers
+    simulate API endpoints by returning predefined responses based on
+    OpenAPI specifications or custom route configurations. This enables
+    frontend and backend teams to develop and test against realistic API
+    behavior before the actual implementation is complete. Insomnia supports
+    both cloud-hosted and self-hosted mock server deployments.
+  version: 1.0.0
+  contact:
+    name: Kong Inc
+    url: https://konghq.com/products/kong-insomnia
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://mock.insomnia.rest
+    description: Insomnia Cloud Mock Server
+  - url: http://localhost:4010
+    description: Local Self-Hosted Mock Server
+paths:
+  /mock-servers:
+    get:
+      operationId: listMockServers
+      summary: List Mock Servers
+      description: >-
+        Returns a list of all mock servers configured within the current
+        workspace, including their status, associated OpenAPI specification,
+        and endpoint URL.
+      tags:
+        - Mock Servers
+      parameters:
+        - name: workspaceId
+          in: query
+          description: Filter mock servers by workspace identifier.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of mock servers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MockServer'
+        '401':
+          description: Unauthorized. Invalid or missing authentication.
+    post:
+      operationId: createMockServer
+      summary: Create Mock Server
+      description: >-
+        Creates a new mock server from an OpenAPI specification or custom
+        route definitions. The mock server begins serving responses
+        immediately after creation.
+      tags:
+        - Mock Servers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MockServerCreate'
+      responses:
+        '201':
+          description: Mock server created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockServer'
+        '400':
+          description: Invalid request body or specification.
+        '401':
+          description: Unauthorized.
+  /mock-servers/{mockServerId}:
+    get:
+      operationId: getMockServer
+      summary: Get Mock Server
+      description: Retrieves details of a specific mock server by its identifier.
+      tags:
+        - Mock Servers
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+      responses:
+        '200':
+          description: Mock server details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockServer'
+        '404':
+          description: Mock server not found.
+    put:
+      operationId: updateMockServer
+      summary: Update Mock Server
+      description: >-
+        Updates an existing mock server configuration, including its
+        associated specification and route behaviors.
+      tags:
+        - Mock Servers
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MockServerUpdate'
+      responses:
+        '200':
+          description: Mock server updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockServer'
+        '400':
+          description: Invalid request body.
+        '404':
+          description: Mock server not found.
+    delete:
+      operationId: deleteMockServer
+      summary: Delete Mock Server
+      description: >-
+        Deletes a mock server and stops serving all associated mock
+        endpoints.
+      tags:
+        - Mock Servers
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+      responses:
+        '204':
+          description: Mock server deleted successfully.
+        '404':
+          description: Mock server not found.
+  /mock-servers/{mockServerId}/routes:
+    get:
+      operationId: listMockRoutes
+      summary: List Mock Routes
+      description: >-
+        Returns all routes configured for the specified mock server,
+        including the HTTP method, path, and response behavior.
+      tags:
+        - Mock Routes
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+      responses:
+        '200':
+          description: A list of mock routes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MockRoute'
+        '404':
+          description: Mock server not found.
+    post:
+      operationId: createMockRoute
+      summary: Create Mock Route
+      description: >-
+        Adds a new custom route to an existing mock server with a
+        predefined response status, headers, and body.
+      tags:
+        - Mock Routes
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MockRouteCreate'
+      responses:
+        '201':
+          description: Mock route created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockRoute'
+        '400':
+          description: Invalid request body.
+        '404':
+          description: Mock server not found.
+  /mock-servers/{mockServerId}/routes/{routeId}:
+    put:
+      operationId: updateMockRoute
+      summary: Update Mock Route
+      description: Updates an existing mock route response behavior.
+      tags:
+        - Mock Routes
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+        - $ref: '#/components/parameters/routeId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MockRouteCreate'
+      responses:
+        '200':
+          description: Mock route updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockRoute'
+        '404':
+          description: Mock route or server not found.
+    delete:
+      operationId: deleteMockRoute
+      summary: Delete Mock Route
+      description: Removes a mock route from the specified mock server.
+      tags:
+        - Mock Routes
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+        - $ref: '#/components/parameters/routeId'
+      responses:
+        '204':
+          description: Mock route deleted successfully.
+        '404':
+          description: Mock route or server not found.
+  /mock-servers/{mockServerId}/logs:
+    get:
+      operationId: listMockServerLogs
+      summary: List Mock Server Logs
+      description: >-
+        Returns a log of requests received by the mock server, including
+        the matched route and response returned.
+      tags:
+        - Mock Logs
+      parameters:
+        - $ref: '#/components/parameters/mockServerId'
+        - name: limit
+          in: query
+          description: Maximum number of log entries to return.
+          required: false
+          schema:
+            type: integer
+            default: 50
+        - name: offset
+          in: query
+          description: Number of log entries to skip for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: A list of mock server log entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MockLogEntry'
+        '404':
+          description: Mock server not found.
+components:
+  parameters:
+    mockServerId:
+      name: mockServerId
+      in: path
+      required: true
+      description: Unique identifier of the mock server.
+      schema:
+        type: string
+    routeId:
+      name: routeId
+      in: path
+      required: true
+      description: Unique identifier of the mock route.
+      schema:
+        type: string
+  schemas:
+    MockServer:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the mock server.
+        name:
+          type: string
+          description: Human-readable name of the mock server.
+        workspaceId:
+          type: string
+          description: Identifier of the workspace this mock server belongs to.
+        url:
+          type: string
+          format: uri
+          description: The base URL where the mock server is accessible.
+        status:
+          type: string
+          enum:
+            - running
+            - stopped
+            - error
+          description: Current operational status of the mock server.
+        specificationSource:
+          type: string
+          enum:
+            - openapi
+            - custom
+          description: Whether routes are generated from an OpenAPI spec or custom definitions.
+        created:
+          type: string
+          format: date-time
+          description: Timestamp when the mock server was created.
+        modified:
+          type: string
+          format: date-time
+          description: Timestamp when the mock server was last modified.
+      required:
+        - _id
+        - name
+        - workspaceId
+        - url
+        - status
+    MockServerCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable name for the new mock server.
+        workspaceId:
+          type: string
+          description: Identifier of the workspace to create the mock server in.
+        specification:
+          type: string
+          description: >-
+            OpenAPI specification content (YAML or JSON) to generate mock
+            routes from.
+        useExamples:
+          type: boolean
+          default: true
+          description: >-
+            Whether to use example values from the OpenAPI spec in
+            responses.
+      required:
+        - name
+        - workspaceId
+    MockServerUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Updated name for the mock server.
+        specification:
+          type: string
+          description: Updated OpenAPI specification content.
+        useExamples:
+          type: boolean
+          description: Whether to use example values from the spec.
+    MockRoute:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the mock route.
+        mockServerId:
+          type: string
+          description: Identifier of the parent mock server.
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+            - PUT
+            - PATCH
+            - DELETE
+            - HEAD
+            - OPTIONS
+          description: HTTP method this route responds to.
+        path:
+          type: string
+          description: URL path pattern for the route.
+        statusCode:
+          type: integer
+          description: HTTP status code returned by this route.
+        responseHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          description: Response headers returned by this route.
+        responseBody:
+          type: string
+          description: Response body content returned by this route.
+        contentType:
+          type: string
+          description: Content-Type of the response.
+        delay:
+          type: integer
+          description: Simulated response delay in milliseconds.
+          default: 0
+      required:
+        - _id
+        - mockServerId
+        - method
+        - path
+        - statusCode
+    MockRouteCreate:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+            - PUT
+            - PATCH
+            - DELETE
+            - HEAD
+            - OPTIONS
+          description: HTTP method this route responds to.
+        path:
+          type: string
+          description: URL path pattern for the route.
+        statusCode:
+          type: integer
+          description: HTTP status code returned by this route.
+        responseHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          description: Response headers returned by this route.
+        responseBody:
+          type: string
+          description: Response body content.
+        contentType:
+          type: string
+          default: application/json
+          description: Content-Type of the response.
+        delay:
+          type: integer
+          description: Simulated response delay in milliseconds.
+          default: 0
+      required:
+        - method
+        - path
+        - statusCode
+    MockLogEntry:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the log entry.
+        mockServerId:
+          type: string
+          description: Identifier of the mock server that received the request.
+        routeId:
+          type: string
+          description: Identifier of the matched route, if any.
+        requestMethod:
+          type: string
+          description: HTTP method of the incoming request.
+        requestPath:
+          type: string
+          description: Path of the incoming request.
+        requestHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          description: Headers of the incoming request.
+        responseStatusCode:
+          type: integer
+          description: Status code of the response returned.
+        matched:
+          type: boolean
+          description: Whether a matching route was found.
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the request was received.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Insomnia cloud authentication token for accessing mock server
+        management endpoints.
+security:
+  - bearerAuth: []
+tags:
+  - name: Mock Servers
+    description: Manage mock server instances.
+  - name: Mock Routes
+    description: Manage individual routes within a mock server.
+  - name: Mock Logs
+    description: View request logs for mock servers.

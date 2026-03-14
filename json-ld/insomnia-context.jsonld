@@ -1,0 +1,71 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "insomnia": "https://insomnia.rest/ns/",
+    "id": "@id",
+    "type": "@type",
+    "Workspace": {
+      "@id": "insomnia:Workspace",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "scope": "insomnia:scope",
+        "parentId": "insomnia:parentId",
+        "isPrivate": "insomnia:isPrivate",
+        "created": "schema:dateCreated",
+        "modified": "schema:dateModified"
+      }
+    },
+    "Request": {
+      "@id": "insomnia:Request",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "url": "schema:url",
+        "method": "insomnia:httpMethod",
+        "headers": "insomnia:headers",
+        "parameters": "insomnia:parameters",
+        "body": "insomnia:requestBody",
+        "authentication": "insomnia:authentication",
+        "parentId": "insomnia:parentId",
+        "created": "schema:dateCreated",
+        "modified": "schema:dateModified"
+      }
+    },
+    "Environment": {
+      "@id": "insomnia:Environment",
+      "@context": {
+        "name": "schema:name",
+        "data": "insomnia:environmentData",
+        "color": "insomnia:color",
+        "parentId": "insomnia:parentId",
+        "isPrivate": "insomnia:isPrivate",
+        "created": "schema:dateCreated",
+        "modified": "schema:dateModified"
+      }
+    },
+    "MockServer": {
+      "@id": "insomnia:MockServer",
+      "@context": {
+        "name": "schema:name",
+        "url": "schema:url",
+        "status": "insomnia:status",
+        "workspaceId": "insomnia:workspaceId",
+        "specificationSource": "insomnia:specificationSource",
+        "created": "schema:dateCreated",
+        "modified": "schema:dateModified"
+      }
+    },
+    "MockRoute": {
+      "@id": "insomnia:MockRoute",
+      "@context": {
+        "method": "insomnia:httpMethod",
+        "path": "insomnia:routePath",
+        "statusCode": "insomnia:statusCode",
+        "responseBody": "insomnia:responseBody",
+        "contentType": "insomnia:contentType",
+        "delay": "insomnia:delay"
+      }
+    }
+  }
+}
