@@ -5,29 +5,77 @@ apis:
   - aid: insomnia:insomnia
     name: Insomnia
     tags:
-      - API
+      - API Clients
+      - Testing
+      - Debugging
+      - API Design
+      - Mocking
     humanURL: https://insomnia.rest/
     properties:
-      - url: https://insomnia.rest/
+      - url: https://docs.insomnia.rest/
         type: Documentation
+      - url: https://insomnia.rest/plugins
+        type: Plugins
+      - url: https://docs.insomnia.rest/inso-cli/introduction/
+        type: CLI
+      - url: https://docs.insomnia.rest/inso-cli/cli-command-reference
+        type: CLIReference
+      - url: https://docs.insomnia.rest/insomnia/api-mocking/
+        type: MockServer
     description: >-
-      Leading Open Source API Development Platform for HTTP, REST, GraphQL,
-      gRPC, SOAP, and WebSockets.
+      Insomnia is an open-source, cross-platform API development platform by
+      Kong for designing, debugging, and testing HTTP, REST, GraphQL, gRPC,
+      SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for
+      CI/CD integration, cloud-hosted and self-hosted mock servers, OpenAPI
+      spec design tools, and collaborative features with cloud sync, local
+      vault, and Git storage options.
 name: Insomnia
 tags:
   - Clients
   - Testing
   - Platform
+  - API Design
+  - Mocking
+  - CLI
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-01-08'
-modified: '2025-01-13'
+modified: '2026-03-14'
 position: Consumer
 description: >-
-  Leading Open Source API Development Platform for HTTP, REST, GraphQL, gRPC,
-  SOAP, and WebSockets.
+  Insomnia is an open-source, cross-platform API development platform by Kong
+  for designing, debugging, and testing HTTP, REST, GraphQL, gRPC, SOAP,
+  WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD
+  integration, cloud-hosted and self-hosted mock servers, OpenAPI spec design
+  tools, and collaborative features with cloud sync, local vault, and Git
+  storage options.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
+common:
+  - name: Documentation
+    url: https://docs.insomnia.rest/
+    type: Documentation
+  - name: GitHub Repository
+    url: https://github.com/Kong/insomnia
+    type: GitHubRepository
+  - name: Plugins
+    url: https://insomnia.rest/plugins
+    type: Plugins
+  - name: Changelog
+    url: https://insomnia.rest/changelog
+    type: Changelog
+  - name: Blog
+    url: https://konghq.com/blog
+    type: Blog
+  - name: Pricing
+    url: https://insomnia.rest/pricing
+    type: Pricing
+  - name: Inso CLI
+    url: https://docs.insomnia.rest/inso-cli/introduction/
+    type: CLI
+  - name: Kong Inc
+    url: https://konghq.com/products/kong-insomnia
+    type: Website
