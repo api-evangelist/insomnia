@@ -486,9 +486,9 @@ components:
 security:
   - bearerAuth: []
 tags:
-  - name: Mock Servers
-    description: Manage mock server instances.
-  - name: Mock Routes
-    description: Manage individual routes within a mock server.
   - name: Mock Logs
     description: View request logs for mock servers.
+  - name: Mock Routes
+    description: Manage individual routes within a mock server.
+  - name: Mock Servers
+    description: Manage mock server instances.

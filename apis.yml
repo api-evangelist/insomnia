@@ -6,10 +6,10 @@ apis:
     name: Insomnia
     tags:
       - API Clients
-      - Testing
-      - Debugging
       - API Design
+      - Debugging
       - Mocking
+      - Testing
     humanURL: https://insomnia.rest/
     properties:
       - url: https://docs.insomnia.rest/
@@ -32,9 +32,9 @@ apis:
   - aid: insomnia:mock-server-api
     name: Insomnia Mock Server API
     tags:
+      - API Design
       - Mocking
       - Testing
-      - API Design
     humanURL: https://docs.insomnia.rest/insomnia/api-mocking/
     properties:
       - url: https://docs.insomnia.rest/insomnia/api-mocking/
@@ -58,12 +58,12 @@ apis:
       implementation is complete.
 name: Insomnia
 tags:
-  - Clients
-  - Testing
-  - Platform
   - API Design
-  - Mocking
   - CLI
+  - Clients
+  - Mocking
+  - Platform
+  - Testing
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
