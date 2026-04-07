@@ -25,7 +25,7 @@ paths:
   /mock-servers:
     get:
       operationId: listMockServers
-      summary: List Mock Servers
+      summary: Insomnia List Mock Servers
       description: >-
         Returns a list of all mock servers configured within the current
         workspace, including their status, associated OpenAPI specification,
@@ -52,7 +52,7 @@ paths:
           description: Unauthorized. Invalid or missing authentication.
     post:
       operationId: createMockServer
-      summary: Create Mock Server
+      summary: Insomnia Create Mock Server
       description: >-
         Creates a new mock server from an OpenAPI specification or custom
         route definitions. The mock server begins serving responses
@@ -79,7 +79,7 @@ paths:
   /mock-servers/{mockServerId}:
     get:
       operationId: getMockServer
-      summary: Get Mock Server
+      summary: Insomnia Get Mock Server
       description: Retrieves details of a specific mock server by its identifier.
       tags:
         - Mock Servers
@@ -96,7 +96,7 @@ paths:
           description: Mock server not found.
     put:
       operationId: updateMockServer
-      summary: Update Mock Server
+      summary: Insomnia Update Mock Server
       description: >-
         Updates an existing mock server configuration, including its
         associated specification and route behaviors.
@@ -123,7 +123,7 @@ paths:
           description: Mock server not found.
     delete:
       operationId: deleteMockServer
-      summary: Delete Mock Server
+      summary: Insomnia Delete Mock Server
       description: >-
         Deletes a mock server and stops serving all associated mock
         endpoints.
@@ -139,7 +139,7 @@ paths:
   /mock-servers/{mockServerId}/routes:
     get:
       operationId: listMockRoutes
-      summary: List Mock Routes
+      summary: Insomnia List Mock Routes
       description: >-
         Returns all routes configured for the specified mock server,
         including the HTTP method, path, and response behavior.
@@ -160,7 +160,7 @@ paths:
           description: Mock server not found.
     post:
       operationId: createMockRoute
-      summary: Create Mock Route
+      summary: Insomnia Create Mock Route
       description: >-
         Adds a new custom route to an existing mock server with a
         predefined response status, headers, and body.
@@ -188,7 +188,7 @@ paths:
   /mock-servers/{mockServerId}/routes/{routeId}:
     put:
       operationId: updateMockRoute
-      summary: Update Mock Route
+      summary: Insomnia Update Mock Route
       description: Updates an existing mock route response behavior.
       tags:
         - Mock Routes
@@ -212,7 +212,7 @@ paths:
           description: Mock route or server not found.
     delete:
       operationId: deleteMockRoute
-      summary: Delete Mock Route
+      summary: Insomnia Delete Mock Route
       description: Removes a mock route from the specified mock server.
       tags:
         - Mock Routes
@@ -227,7 +227,7 @@ paths:
   /mock-servers/{mockServerId}/logs:
     get:
       operationId: listMockServerLogs
-      summary: List Mock Server Logs
+      summary: Insomnia List Mock Server Logs
       description: >-
         Returns a log of requests received by the mock server, including
         the matched route and response returned.
