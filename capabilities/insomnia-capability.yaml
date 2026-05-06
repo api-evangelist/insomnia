@@ -1,0 +1,363 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Insomnia Mock Server API
+  description: The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by
+    Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI specifications
+    or custom route configurations. This enables frontend and backend teams to develop and test against realistic API behavior
+    before the actual implementation is complete. Insomnia supports both cloud-hosted and self-hosted mock server deployments.
+  tags:
+  - Insomnia
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: insomnia
+    baseUri: https://mock.insomnia.rest
+    description: Insomnia Mock Server API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{INSOMNIA_TOKEN}}'
+    resources:
+    - name: mock-servers
+      path: /mock-servers
+      operations:
+      - name: listmockservers
+        method: GET
+        description: Insomnia List Mock Servers
+        inputParameters:
+        - name: workspaceId
+          in: query
+          type: string
+          description: Filter mock servers by workspace identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmockserver
+        method: POST
+        description: Insomnia Create Mock Server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: mock-servers-mockserverid
+      path: /mock-servers/{mockServerId}
+      operations:
+      - name: getmockserver
+        method: GET
+        description: Insomnia Get Mock Server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatemockserver
+        method: PUT
+        description: Insomnia Update Mock Server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemockserver
+        method: DELETE
+        description: Insomnia Delete Mock Server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: mock-servers-mockserverid-routes
+      path: /mock-servers/{mockServerId}/routes
+      operations:
+      - name: listmockroutes
+        method: GET
+        description: Insomnia List Mock Routes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmockroute
+        method: POST
+        description: Insomnia Create Mock Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: mock-servers-mockserverid-routes-routeid
+      path: /mock-servers/{mockServerId}/routes/{routeId}
+      operations:
+      - name: updatemockroute
+        method: PUT
+        description: Insomnia Update Mock Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemockroute
+        method: DELETE
+        description: Insomnia Delete Mock Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: mock-servers-mockserverid-logs
+      path: /mock-servers/{mockServerId}/logs
+      operations:
+      - name: listmockserverlogs
+        method: GET
+        description: Insomnia List Mock Server Logs
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of log entries to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Number of log entries to skip for pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: insomnia-rest
+    description: REST adapter for Insomnia Mock Server API.
+    resources:
+    - path: /mock-servers
+      name: listmockservers
+      operations:
+      - method: GET
+        name: listmockservers
+        description: Insomnia List Mock Servers
+        call: insomnia.listmockservers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers
+      name: createmockserver
+      operations:
+      - method: POST
+        name: createmockserver
+        description: Insomnia Create Mock Server
+        call: insomnia.createmockserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}
+      name: getmockserver
+      operations:
+      - method: GET
+        name: getmockserver
+        description: Insomnia Get Mock Server
+        call: insomnia.getmockserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}
+      name: updatemockserver
+      operations:
+      - method: PUT
+        name: updatemockserver
+        description: Insomnia Update Mock Server
+        call: insomnia.updatemockserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}
+      name: deletemockserver
+      operations:
+      - method: DELETE
+        name: deletemockserver
+        description: Insomnia Delete Mock Server
+        call: insomnia.deletemockserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}/routes
+      name: listmockroutes
+      operations:
+      - method: GET
+        name: listmockroutes
+        description: Insomnia List Mock Routes
+        call: insomnia.listmockroutes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}/routes
+      name: createmockroute
+      operations:
+      - method: POST
+        name: createmockroute
+        description: Insomnia Create Mock Route
+        call: insomnia.createmockroute
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}/routes/{routeId}
+      name: updatemockroute
+      operations:
+      - method: PUT
+        name: updatemockroute
+        description: Insomnia Update Mock Route
+        call: insomnia.updatemockroute
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}/routes/{routeId}
+      name: deletemockroute
+      operations:
+      - method: DELETE
+        name: deletemockroute
+        description: Insomnia Delete Mock Route
+        call: insomnia.deletemockroute
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /mock-servers/{mockServerId}/logs
+      name: listmockserverlogs
+      operations:
+      - method: GET
+        name: listmockserverlogs
+        description: Insomnia List Mock Server Logs
+        call: insomnia.listmockserverlogs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: insomnia-mcp
+    transport: http
+    description: MCP adapter for Insomnia Mock Server API for AI agent use.
+    tools:
+    - name: listmockservers
+      description: Insomnia List Mock Servers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insomnia.listmockservers
+      with:
+        workspaceId: tools.workspaceId
+      inputParameters:
+      - name: workspaceId
+        type: string
+        description: Filter mock servers by workspace identifier.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmockserver
+      description: Insomnia Create Mock Server
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insomnia.createmockserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmockserver
+      description: Insomnia Get Mock Server
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insomnia.getmockserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatemockserver
+      description: Insomnia Update Mock Server
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: insomnia.updatemockserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemockserver
+      description: Insomnia Delete Mock Server
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: insomnia.deletemockserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmockroutes
+      description: Insomnia List Mock Routes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insomnia.listmockroutes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmockroute
+      description: Insomnia Create Mock Route
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: insomnia.createmockroute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatemockroute
+      description: Insomnia Update Mock Route
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: insomnia.updatemockroute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemockroute
+      description: Insomnia Delete Mock Route
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: insomnia.deletemockroute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmockserverlogs
+      description: Insomnia List Mock Server Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insomnia.listmockserverlogs
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: limit
+        type: integer
+        description: Maximum number of log entries to return.
+      - name: offset
+        type: integer
+        description: Number of log entries to skip for pagination.
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    INSOMNIA_TOKEN: INSOMNIA_TOKEN
