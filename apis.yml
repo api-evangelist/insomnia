@@ -93,7 +93,7 @@ common:
     type: Plugins
   - name: Changelog
     url: https://insomnia.rest/changelog
-    type: Changelog
+    type: ChangeLog
   - name: Blog
     url: https://konghq.com/blog
     type: Blog
