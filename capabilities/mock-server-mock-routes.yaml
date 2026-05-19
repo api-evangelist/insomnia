@@ -1,0 +1,172 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Insomnia Mock Server API — Mock Routes
+  description: 'Insomnia Mock Server API — Mock Routes. 4 operations. Lead operation: Insomnia List Mock Routes. Self-contained
+    Naftiko capability covering one Insomnia business surface.'
+  tags:
+  - Insomnia
+  - Mock Routes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INSOMNIA_API_KEY: INSOMNIA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mock-server-mock-routes
+    baseUri: https://mock.insomnia.rest
+    description: Insomnia Mock Server API — Mock Routes business capability. Self-contained, no shared references.
+    resources:
+    - name: mock-servers-mockServerId-routes
+      path: /mock-servers/{mockServerId}/routes
+      operations:
+      - name: listmockroutes
+        method: GET
+        description: Insomnia List Mock Routes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmockroute
+        method: POST
+        description: Insomnia Create Mock Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: mock-servers-mockServerId-routes-routeId
+      path: /mock-servers/{mockServerId}/routes/{routeId}
+      operations:
+      - name: updatemockroute
+        method: PUT
+        description: Insomnia Update Mock Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemockroute
+        method: DELETE
+        description: Insomnia Delete Mock Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.INSOMNIA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: mock-server-mock-routes-rest
+    port: 8080
+    description: REST adapter for Insomnia Mock Server API — Mock Routes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/mock-servers/{mockserverid}/routes
+      name: mock-servers-mockserverid-routes
+      description: REST surface for mock-servers-mockServerId-routes.
+      operations:
+      - method: GET
+        name: listmockroutes
+        description: Insomnia List Mock Routes
+        call: mock-server-mock-routes.listmockroutes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmockroute
+        description: Insomnia Create Mock Route
+        call: mock-server-mock-routes.createmockroute
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/mock-servers/{mockserverid}/routes/{routeid}
+      name: mock-servers-mockserverid-routes-routeid
+      description: REST surface for mock-servers-mockServerId-routes-routeId.
+      operations:
+      - method: PUT
+        name: updatemockroute
+        description: Insomnia Update Mock Route
+        call: mock-server-mock-routes.updatemockroute
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemockroute
+        description: Insomnia Delete Mock Route
+        call: mock-server-mock-routes.deletemockroute
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mock-server-mock-routes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Insomnia Mock Server API — Mock Routes. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: insomnia-list-mock-routes
+      description: Insomnia List Mock Routes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mock-server-mock-routes.listmockroutes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: insomnia-create-mock-route
+      description: Insomnia Create Mock Route
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mock-server-mock-routes.createmockroute
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: insomnia-update-mock-route
+      description: Insomnia Update Mock Route
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: mock-server-mock-routes.updatemockroute
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: insomnia-delete-mock-route
+      description: Insomnia Delete Mock Route
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: mock-server-mock-routes.deletemockroute
+      outputParameters:
+      - type: object
+        mapping: $.
