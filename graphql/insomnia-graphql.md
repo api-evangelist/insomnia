@@ -1,0 +1,1 @@
+# Insomnia GraphQL API

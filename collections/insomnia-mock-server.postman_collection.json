@@ -1,0 +1,1816 @@
+{
+  "item": [
+    {
+      "id": "b73827ba-c266-475a-9d36-5ac21bdb4060",
+      "name": "Mock Logs",
+      "description": {
+        "content": "View request logs for mock servers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00f672ed-8f05-467e-94cb-6bf49ee072fd",
+          "name": "Insomnia List Mock Server Logs",
+          "request": {
+            "name": "Insomnia List Mock Server Logs",
+            "description": {
+              "content": "Returns a log of requests received by the mock server, including the matched route and response returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of log entries to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of log entries to skip for pagination."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3631e0ca-3dd8-4b89-9df9-e68d2c164eee",
+              "name": "A list of mock server log entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_id\": \"string\",\n    \"mockServerId\": \"string\",\n    \"routeId\": \"string\",\n    \"requestMethod\": \"string\",\n    \"requestPath\": \"string\",\n    \"requestHeaders\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"responseStatusCode\": 1068,\n    \"matched\": false,\n    \"timestamp\": \"1948-03-16T01:30:55.810Z\"\n  },\n  {\n    \"_id\": \"string\",\n    \"mockServerId\": \"string\",\n    \"routeId\": \"string\",\n    \"requestMethod\": \"string\",\n    \"requestPath\": \"string\",\n    \"requestHeaders\": {\n      \"key_0\": \"string\"\n    },\n    \"responseStatusCode\": 143,\n    \"matched\": true,\n    \"timestamp\": \"2003-10-22T17:08:31.748Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b4708a2-f5f8-41c7-8fc8-a5c3f1b5d41d",
+              "name": "Mock server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7d9fbfe3-8d19-4087-80e2-5324a554b9c7",
+      "name": "Mock Routes",
+      "description": {
+        "content": "Manage individual routes within a mock server.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab84c5c6-5ffa-4c53-b77e-cfe7dfdaf1a1",
+          "name": "Insomnia List Mock Routes",
+          "request": {
+            "name": "Insomnia List Mock Routes",
+            "description": {
+              "content": "Returns all routes configured for the specified mock server, including the HTTP method, path, and response behavior.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId",
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e81cf5f-6dd4-49da-abe6-0294e9f600c3",
+              "name": "A list of mock routes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_id\": \"string\",\n    \"mockServerId\": \"string\",\n    \"method\": \"GET\",\n    \"path\": \"string\",\n    \"statusCode\": 8813,\n    \"responseHeaders\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"responseBody\": \"string\",\n    \"contentType\": \"string\",\n    \"delay\": 0\n  },\n  {\n    \"_id\": \"string\",\n    \"mockServerId\": \"string\",\n    \"method\": \"HEAD\",\n    \"path\": \"string\",\n    \"statusCode\": 8970,\n    \"responseHeaders\": {\n      \"key_0\": \"string\"\n    },\n    \"responseBody\": \"string\",\n    \"contentType\": \"string\",\n    \"delay\": 0\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2cdb10c-9362-4c09-821c-3da1ec793ebf",
+              "name": "Mock server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a208ef3-d525-4c66-a135-a55d2f74471e",
+          "name": "Insomnia Create Mock Route",
+          "request": {
+            "name": "Insomnia Create Mock Route",
+            "description": {
+              "content": "Adds a new custom route to an existing mock server with a predefined response status, headers, and body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId",
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"statusCode\": \"<integer>\",\n  \"responseHeaders\": {\n    \"key_0\": \"<string>\"\n  },\n  \"responseBody\": \"<string>\",\n  \"contentType\": \"application/json\",\n  \"delay\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e54d645c-6a5e-4c45-bf6a-24ababc56b44",
+              "name": "Mock route created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"statusCode\": \"<integer>\",\n  \"responseHeaders\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"responseBody\": \"<string>\",\n  \"contentType\": \"application/json\",\n  \"delay\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"string\",\n  \"mockServerId\": \"string\",\n  \"method\": \"HEAD\",\n  \"path\": \"string\",\n  \"statusCode\": 7476,\n  \"responseHeaders\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"responseBody\": \"string\",\n  \"contentType\": \"string\",\n  \"delay\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d193d316-f651-4c20-8587-7a174883e41b",
+              "name": "Invalid request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"statusCode\": \"<integer>\",\n  \"responseHeaders\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"responseBody\": \"<string>\",\n  \"contentType\": \"application/json\",\n  \"delay\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2200724b-b847-4abf-9ce0-60967d6a389d",
+              "name": "Mock server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"statusCode\": \"<integer>\",\n  \"responseHeaders\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"responseBody\": \"<string>\",\n  \"contentType\": \"application/json\",\n  \"delay\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ee61f4a-d86b-4acf-83a3-a2b42eb8d87a",
+          "name": "Insomnia Update Mock Route",
+          "request": {
+            "name": "Insomnia Update Mock Route",
+            "description": {
+              "content": "Updates an existing mock route response behavior.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId",
+                "routes",
+                ":routeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "routeId",
+                  "description": "(Required) Unique identifier of the mock route."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"statusCode\": \"<integer>\",\n  \"responseHeaders\": {\n    \"key_0\": \"<string>\"\n  },\n  \"responseBody\": \"<string>\",\n  \"contentType\": \"application/json\",\n  \"delay\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ad3bb2b-065d-48fb-a407-daee287b7714",
+              "name": "Mock route updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the mock route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"statusCode\": \"<integer>\",\n  \"responseHeaders\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"responseBody\": \"<string>\",\n  \"contentType\": \"application/json\",\n  \"delay\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"string\",\n  \"mockServerId\": \"string\",\n  \"method\": \"HEAD\",\n  \"path\": \"string\",\n  \"statusCode\": 7476,\n  \"responseHeaders\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"responseBody\": \"string\",\n  \"contentType\": \"string\",\n  \"delay\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6572c1b8-af66-448e-b4fd-18f787cc71d5",
+              "name": "Mock route or server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the mock route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"path\": \"<string>\",\n  \"statusCode\": \"<integer>\",\n  \"responseHeaders\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"responseBody\": \"<string>\",\n  \"contentType\": \"application/json\",\n  \"delay\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee2e3839-ceeb-4128-bfa3-0300f96338f0",
+          "name": "Insomnia Delete Mock Route",
+          "request": {
+            "name": "Insomnia Delete Mock Route",
+            "description": {
+              "content": "Removes a mock route from the specified mock server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId",
+                "routes",
+                ":routeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "routeId",
+                  "description": "(Required) Unique identifier of the mock route."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98f1b31d-6079-4482-a57c-5d92339c4034",
+              "name": "Mock route deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the mock route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a502d2cc-395c-4358-a0e5-e08fca24796a",
+              "name": "Mock route or server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the mock route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e72cdfe7-8507-4936-bf0d-bb24a44585a8",
+      "name": "Mock Servers",
+      "description": {
+        "content": "Manage mock server instances.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e66b3bd-27b8-43a6-b57f-b0ab862f37ea",
+          "name": "Insomnia List Mock Servers",
+          "request": {
+            "name": "Insomnia List Mock Servers",
+            "description": {
+              "content": "Returns a list of all mock servers configured within the current workspace, including their status, associated OpenAPI specification, and endpoint URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "workspaceId",
+                  "value": "<string>",
+                  "description": "Filter mock servers by workspace identifier."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6137c5e-78f6-4c54-933b-51a9c959ca9f",
+              "name": "A list of mock servers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_id\": \"string\",\n    \"name\": \"string\",\n    \"workspaceId\": \"string\",\n    \"url\": \"https://haMYHhvyiQbCFPg.xjsnHpcF0TOOe4BImwWjpmntHUG5ONraA\",\n    \"status\": \"running\",\n    \"specificationSource\": \"openapi\",\n    \"created\": \"1986-08-01T20:17:34.661Z\",\n    \"modified\": \"1974-12-01T06:52:14.146Z\"\n  },\n  {\n    \"_id\": \"string\",\n    \"name\": \"string\",\n    \"workspaceId\": \"string\",\n    \"url\": \"https://HNzYAjdymaVrXT.fiuQ5,SBPtIPwjz1HZq.Q8oQM-V1X0hVGPXFqEu2L,TGEBoR\",\n    \"status\": \"error\",\n    \"specificationSource\": \"openapi\",\n    \"created\": \"1965-02-28T12:10:01.082Z\",\n    \"modified\": \"1972-10-22T06:41:48.346Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59e0bd47-1eb3-480a-9676-85b8db879de7",
+              "name": "Unauthorized. Invalid or missing authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f8088a2-691d-4688-9ff7-a29d9ebdc957",
+          "name": "Insomnia Create Mock Server",
+          "request": {
+            "name": "Insomnia Create Mock Server",
+            "description": {
+              "content": "Creates a new mock server from an OpenAPI specification or custom route definitions. The mock server begins serving responses immediately after creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3e7725ad-0120-4111-a47f-f7743ac6060c",
+              "name": "Mock server created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"string\",\n  \"name\": \"string\",\n  \"workspaceId\": \"string\",\n  \"url\": \"https://OiwMqsYcOCGhF.yfgbfGhmMyDCXWc9fB1QYNZqzhBrVZbIdCaya,x2QXutRkjjqVPU280gslGKpAkOh\",\n  \"status\": \"running\",\n  \"specificationSource\": \"openapi\",\n  \"created\": \"2016-10-23T00:37:41.935Z\",\n  \"modified\": \"1954-04-20T21:37:30.864Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "add3833f-3313-440b-8d4f-c721cfa62c72",
+              "name": "Invalid request body or specification.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e59e99e0-37ae-48e1-b817-20f87c3dc0bf",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspaceId\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "596352db-2f04-4a0d-acfd-bf3b68a41ba7",
+          "name": "Insomnia Get Mock Server",
+          "request": {
+            "name": "Insomnia Get Mock Server",
+            "description": {
+              "content": "Retrieves details of a specific mock server by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d4737cf-898b-4d75-8948-d565a4350416",
+              "name": "Mock server details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"string\",\n  \"name\": \"string\",\n  \"workspaceId\": \"string\",\n  \"url\": \"https://OiwMqsYcOCGhF.yfgbfGhmMyDCXWc9fB1QYNZqzhBrVZbIdCaya,x2QXutRkjjqVPU280gslGKpAkOh\",\n  \"status\": \"running\",\n  \"specificationSource\": \"openapi\",\n  \"created\": \"2016-10-23T00:37:41.935Z\",\n  \"modified\": \"1954-04-20T21:37:30.864Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "595e629b-bed9-4b94-ad4f-94bed250d7d1",
+              "name": "Mock server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "690d4d29-609a-4a6e-b3ca-16ee354d4e4f",
+          "name": "Insomnia Update Mock Server",
+          "request": {
+            "name": "Insomnia Update Mock Server",
+            "description": {
+              "content": "Updates an existing mock server configuration, including its associated specification and route behaviors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8af5edbd-ad55-4d3f-a5d4-651bd3a43367",
+              "name": "Mock server updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"string\",\n  \"name\": \"string\",\n  \"workspaceId\": \"string\",\n  \"url\": \"https://OiwMqsYcOCGhF.yfgbfGhmMyDCXWc9fB1QYNZqzhBrVZbIdCaya,x2QXutRkjjqVPU280gslGKpAkOh\",\n  \"status\": \"running\",\n  \"specificationSource\": \"openapi\",\n  \"created\": \"2016-10-23T00:37:41.935Z\",\n  \"modified\": \"1954-04-20T21:37:30.864Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d988b335-4e3d-4810-8f01-ce150a2051d1",
+              "name": "Invalid request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3259a803-fd82-425a-89e0-332f68000568",
+              "name": "Mock server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"specification\": \"<string>\",\n  \"useExamples\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56166b4c-4d03-4f8f-af36-0c0f20493d67",
+          "name": "Insomnia Delete Mock Server",
+          "request": {
+            "name": "Insomnia Delete Mock Server",
+            "description": {
+              "content": "Deletes a mock server and stops serving all associated mock endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc73e8ef-9f3a-4214-a422-4252ae2fdac2",
+              "name": "Mock server deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f591c14-c036-4c88-bb91-9e3f0a4aea9b",
+              "name": "Mock server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mock.insomnia.rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b19b902e-8a81-47a5-94a2-5c0b42123770",
+    "name": "Insomnia Mock Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI specifications or custom route configurations. This enables frontend and backend teams to develop and test against realistic API behavior before the actual implementation is complete. Insomnia supports both cloud-hosted and self-hosted mock server deployments.\n\nContact Support:\n Name: Kong Inc",
+      "type": "text/plain"
+    }
+  }
+}

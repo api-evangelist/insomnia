@@ -21,10 +21,13 @@ apis:
     type: CLIReference
   - url: https://docs.insomnia.rest/insomnia/api-mocking/
     type: MockServer
-  description: Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
-    HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD integration, cloud-hosted
-    and self-hosted mock servers, OpenAPI spec design tools, and collaborative features with cloud sync, local vault, and
-    Git storage options.
+  - url: graphql/insomnia-graphql.md
+    type: GraphQL
+  description: >-
+    Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
+    HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD
+    integration, cloud-hosted and self-hosted mock servers, OpenAPI spec design tools, and collaborative features with
+    cloud sync, local vault, and Git storage options.
 - aid: insomnia:mock-server-api
   name: Insomnia Mock Server API
   tags:
@@ -45,16 +48,11 @@ apis:
     type: JSONSchema
   - url: json-ld/insomnia-context.jsonld
     type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/mock-server-mock-logs.yaml
-  - type: NaftikoCapability
-    url: capabilities/mock-server-mock-routes.yaml
-  - type: NaftikoCapability
-    url: capabilities/mock-server-mock-servers.yaml
-  description: The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by
-    Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI specifications
-    or custom route configurations, enabling teams to develop and test against realistic API behavior before the actual implementation
-    is complete.
+  description: >-
+    The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by
+    Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI
+    specifications or custom route configurations, enabling teams to develop and test against realistic API behavior
+    before the actual implementation is complete.
 name: Insomnia
 tags:
 - API Design
@@ -69,10 +67,11 @@ access: 3rd-Party
 created: '2025-01-08'
 modified: '2026-05-19'
 position: Consumer
-description: Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
-  HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD integration, cloud-hosted
-  and self-hosted mock servers, OpenAPI spec design tools, and collaborative features with cloud sync, local vault, and Git
-  storage options.
+description: >-
+  Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
+  HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD integration,
+  cloud-hosted and self-hosted mock servers, OpenAPI spec design tools, and collaborative features with cloud sync,
+  local vault, and Git storage options.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
