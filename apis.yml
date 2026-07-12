@@ -77,6 +77,10 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+- type: DomainSecurity
+  url: security/insomnia-domain-security.yml
+- type: Authentication
+  url: authentication/insomnia-authentication.yml
 - name: Documentation
   url: https://docs.insomnia.rest/
   type: Documentation
