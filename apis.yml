@@ -77,6 +77,8 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+- type: AgenticAccess
+  url: agentic-access/insomnia-agentic-access.yml
 - type: DomainSecurity
   url: security/insomnia-domain-security.yml
 - type: Authentication
