@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: Insomnia Mock Server Mock Logs Mock Routes API
+  description: The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI specifications or custom route configurations. This enables frontend and backend teams to develop and test against realistic API behavior before the actual implementation is complete. Insomnia supports both cloud-hosted and self-hosted mock server deployments.
+  version: 1.0.0
+  contact:
+    name: Kong Inc
+    url: https://konghq.com/products/kong-insomnia
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://mock.insomnia.rest
+  description: Insomnia Cloud Mock Server
+- url: http://localhost:4010
+  description: Local Self-Hosted Mock Server
+security:
+- bearerAuth: []
+tags:
+- name: Mock Routes
+  description: Manage individual routes within a mock server.
+paths:
+  /mock-servers/{mockServerId}/routes:
+    get:
+      operationId: listMockRoutes
+      summary: Insomnia List Mock Routes
+      description: Returns all routes configured for the specified mock server, including the HTTP method, path, and response behavior.
+      tags:
+      - Mock Routes
+      parameters:
+      - $ref: '#/components/parameters/mockServerId'
+      responses:
+        '200':
+          description: A list of mock routes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MockRoute'
+        '404':
+          description: Mock server not found.
+    post:
+      operationId: createMockRoute
+      summary: Insomnia Create Mock Route
+      description: Adds a new custom route to an existing mock server with a predefined response status, headers, and body.
+      tags:
+      - Mock Routes
+      parameters:
+      - $ref: '#/components/parameters/mockServerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MockRouteCreate'
+      responses:
+        '201':
+          description: Mock route created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockRoute'
+        '400':
+          description: Invalid request body.
+        '404':
+          description: Mock server not found.
+  /mock-servers/{mockServerId}/routes/{routeId}:
+    put:
+      operationId: updateMockRoute
+      summary: Insomnia Update Mock Route
+      description: Updates an existing mock route response behavior.
+      tags:
+      - Mock Routes
+      parameters:
+      - $ref: '#/components/parameters/mockServerId'
+      - $ref: '#/components/parameters/routeId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MockRouteCreate'
+      responses:
+        '200':
+          description: Mock route updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockRoute'
+        '404':
+          description: Mock route or server not found.
+    delete:
+      operationId: deleteMockRoute
+      summary: Insomnia Delete Mock Route
+      description: Removes a mock route from the specified mock server.
+      tags:
+      - Mock Routes
+      parameters:
+      - $ref: '#/components/parameters/mockServerId'
+      - $ref: '#/components/parameters/routeId'
+      responses:
+        '204':
+          description: Mock route deleted successfully.
+        '404':
+          description: Mock route or server not found.
+components:
+  schemas:
+    MockRouteCreate:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+          - HEAD
+          - OPTIONS
+          description: HTTP method this route responds to.
+        path:
+          type: string
+          description: URL path pattern for the route.
+        statusCode:
+          type: integer
+          description: HTTP status code returned by this route.
+        responseHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          description: Response headers returned by this route.
+        responseBody:
+          type: string
+          description: Response body content.
+        contentType:
+          type: string
+          default: application/json
+          description: Content-Type of the response.
+        delay:
+          type: integer
+          description: Simulated response delay in milliseconds.
+          default: 0
+      required:
+      - method
+      - path
+      - statusCode
+    MockRoute:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the mock route.
+        mockServerId:
+          type: string
+          description: Identifier of the parent mock server.
+        method:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+          - HEAD
+          - OPTIONS
+          description: HTTP method this route responds to.
+        path:
+          type: string
+          description: URL path pattern for the route.
+        statusCode:
+          type: integer
+          description: HTTP status code returned by this route.
+        responseHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          description: Response headers returned by this route.
+        responseBody:
+          type: string
+          description: Response body content returned by this route.
+        contentType:
+          type: string
+          description: Content-Type of the response.
+        delay:
+          type: integer
+          description: Simulated response delay in milliseconds.
+          default: 0
+      required:
+      - _id
+      - mockServerId
+      - method
+      - path
+      - statusCode
+  parameters:
+    routeId:
+      name: routeId
+      in: path
+      required: true
+      description: Unique identifier of the mock route.
+      schema:
+        type: string
+    mockServerId:
+      name: mockServerId
+      in: path
+      required: true
+      description: Unique identifier of the mock server.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Insomnia cloud authentication token for accessing mock server management endpoints.

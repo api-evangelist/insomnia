@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: Insomnia Mock Server Mock Logs API
+  description: The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI specifications or custom route configurations. This enables frontend and backend teams to develop and test against realistic API behavior before the actual implementation is complete. Insomnia supports both cloud-hosted and self-hosted mock server deployments.
+  version: 1.0.0
+  contact:
+    name: Kong Inc
+    url: https://konghq.com/products/kong-insomnia
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://mock.insomnia.rest
+  description: Insomnia Cloud Mock Server
+- url: http://localhost:4010
+  description: Local Self-Hosted Mock Server
+security:
+- bearerAuth: []
+tags:
+- name: Mock Logs
+  description: View request logs for mock servers.
+paths:
+  /mock-servers/{mockServerId}/logs:
+    get:
+      operationId: listMockServerLogs
+      summary: Insomnia List Mock Server Logs
+      description: Returns a log of requests received by the mock server, including the matched route and response returned.
+      tags:
+      - Mock Logs
+      parameters:
+      - $ref: '#/components/parameters/mockServerId'
+      - name: limit
+        in: query
+        description: Maximum number of log entries to return.
+        required: false
+        schema:
+          type: integer
+          default: 50
+      - name: offset
+        in: query
+        description: Number of log entries to skip for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: A list of mock server log entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MockLogEntry'
+        '404':
+          description: Mock server not found.
+components:
+  schemas:
+    MockLogEntry:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the log entry.
+        mockServerId:
+          type: string
+          description: Identifier of the mock server that received the request.
+        routeId:
+          type: string
+          description: Identifier of the matched route, if any.
+        requestMethod:
+          type: string
+          description: HTTP method of the incoming request.
+        requestPath:
+          type: string
+          description: Path of the incoming request.
+        requestHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          description: Headers of the incoming request.
+        responseStatusCode:
+          type: integer
+          description: Status code of the response returned.
+        matched:
+          type: boolean
+          description: Whether a matching route was found.
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the request was received.
+  parameters:
+    mockServerId:
+      name: mockServerId
+      in: path
+      required: true
+      description: Unique identifier of the mock server.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Insomnia cloud authentication token for accessing mock server management endpoints.
