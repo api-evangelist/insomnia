@@ -24,35 +24,67 @@ apis:
   - url: graphql/insomnia-graphql.md
     type: GraphQL
   description: >-
-    Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
-    HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD
-    integration, cloud-hosted and self-hosted mock servers, OpenAPI spec design tools, and collaborative features with
-    cloud sync, local vault, and Git storage options.
-- aid: insomnia:mock-server-api
-  name: Insomnia Mock Server API
+    Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging,
+    and testing HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso
+    CLI for CI/CD integration, cloud-hosted and self-hosted mock servers, OpenAPI spec design tools, and
+    collaborative features with cloud sync, local vault, and Git storage options.
+- aid: insomnia:insomnia-mock-logs-api
+  name: Insomnia Mock Logs API
+  description: View request logs for mock servers.
+  humanURL: https://insomnia.rest/
   tags:
-  - API Design
-  - Mocking
-  - Testing
-  humanURL: https://docs.insomnia.rest/insomnia/api-mocking/
+  - Mock Logs
   properties:
-  - url: https://docs.insomnia.rest/insomnia/api-mocking/
-    type: Documentation
-  - url: openapi/insomnia-mock-server-openapi.yml
-    type: OpenAPI
-  - url: json-schema/workspace.json
-    type: JSONSchema
-  - url: json-schema/request.json
-    type: JSONSchema
-  - url: json-schema/environment.json
-    type: JSONSchema
-  - url: json-ld/insomnia-context.jsonld
-    type: JSONLD
-  description: >-
-    The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by
-    Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI
-    specifications or custom route configurations, enabling teams to develop and test against realistic API behavior
-    before the actual implementation is complete.
+  - type: OpenAPI
+    url: openapi/insomnia-mock-logs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.insomnia.rest/insomnia/api-mocking/
+  - type: JSONSchema
+    url: json-schema/workspace.json
+  - type: JSONSchema
+    url: json-schema/request.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONLD
+    url: json-ld/insomnia-context.jsonld
+- aid: insomnia:insomnia-mock-routes-api
+  name: Insomnia Mock Routes API
+  description: Manage individual routes within a mock server.
+  humanURL: https://insomnia.rest/
+  tags:
+  - Mock Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/insomnia-mock-routes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.insomnia.rest/insomnia/api-mocking/
+  - type: JSONSchema
+    url: json-schema/workspace.json
+  - type: JSONSchema
+    url: json-schema/request.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONLD
+    url: json-ld/insomnia-context.jsonld
+- aid: insomnia:insomnia-mock-servers-api
+  name: Insomnia Mock Servers API
+  description: Manage mock server instances.
+  humanURL: https://insomnia.rest/
+  tags:
+  - Mock Servers
+  properties:
+  - type: OpenAPI
+    url: openapi/insomnia-mock-servers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.insomnia.rest/insomnia/api-mocking/
+  - type: JSONSchema
+    url: json-schema/workspace.json
+  - type: JSONSchema
+    url: json-schema/request.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONLD
+    url: json-ld/insomnia-context.jsonld
 name: Insomnia
 tags:
 - API Design
@@ -62,7 +94,20 @@ tags:
 - Platform
 - Testing
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/insomnia.png
 access: 3rd-Party
 created: '2025-01-08'
 modified: '2026-05-19'
