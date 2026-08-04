@@ -1,0 +1,18 @@
+{
+  "provider": "insomnia",
+  "sources": [
+    "insomnia-mock-logs-api-openapi.yml",
+    "insomnia-mock-routes-api-openapi.yml",
+    "insomnia-mock-servers-api-openapi.yml"
+  ],
+  "outputs": [
+    "insomnia-mock-logs-api-openapi.yml",
+    "insomnia-mock-routes-api-openapi.yml",
+    "insomnia-mock-servers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
