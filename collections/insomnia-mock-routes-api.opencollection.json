@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Insomnia Mock Server Mock Logs Mock Routes API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mock Routes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Insomnia List Mock Routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mock.insomnia.rest/mock-servers/:mockServerId/routes",
+            "params": [
+              {
+                "name": "mockServerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock server."
+              }
+            ]
+          },
+          "docs": "Returns all routes configured for the specified mock server, including the HTTP method, path, and response behavior."
+        },
+        {
+          "info": {
+            "name": "Insomnia Create Mock Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://mock.insomnia.rest/mock-servers/:mockServerId/routes",
+            "params": [
+              {
+                "name": "mockServerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock server."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new custom route to an existing mock server with a predefined response status, headers, and body."
+        },
+        {
+          "info": {
+            "name": "Insomnia Update Mock Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://mock.insomnia.rest/mock-servers/:mockServerId/routes/:routeId",
+            "params": [
+              {
+                "name": "mockServerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock server."
+              },
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock route."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing mock route response behavior."
+        },
+        {
+          "info": {
+            "name": "Insomnia Delete Mock Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://mock.insomnia.rest/mock-servers/:mockServerId/routes/:routeId",
+            "params": [
+              {
+                "name": "mockServerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock server."
+              },
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock route."
+              }
+            ]
+          },
+          "docs": "Removes a mock route from the specified mock server."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

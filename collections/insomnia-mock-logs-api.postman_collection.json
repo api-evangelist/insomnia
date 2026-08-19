@@ -1,0 +1,219 @@
+{
+  "item": [
+    {
+      "id": "3d18b9de-0cc9-48b1-b6d4-e79b125c5c36",
+      "name": "Mock Logs",
+      "description": {
+        "content": "View request logs for mock servers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff507a83-01de-4d08-a278-a4a04ba4aac6",
+          "name": "Insomnia List Mock Server Logs",
+          "request": {
+            "name": "Insomnia List Mock Server Logs",
+            "description": {
+              "content": "Returns a log of requests received by the mock server, including the matched route and response returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-servers",
+                ":mockServerId",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of log entries to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of log entries to skip for pagination."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mockServerId",
+                  "description": "(Required) Unique identifier of the mock server."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "932aac6f-a484-4039-b166-4e8b7a864946",
+              "name": "A list of mock server log entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_id\": \"string\",\n    \"mockServerId\": \"string\",\n    \"routeId\": \"string\",\n    \"requestMethod\": \"string\",\n    \"requestPath\": \"string\",\n    \"requestHeaders\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"responseStatusCode\": 1548,\n    \"matched\": true,\n    \"timestamp\": \"1987-11-04T07:25:45.315Z\"\n  },\n  {\n    \"_id\": \"string\",\n    \"mockServerId\": \"string\",\n    \"routeId\": \"string\",\n    \"requestMethod\": \"string\",\n    \"requestPath\": \"string\",\n    \"requestHeaders\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"responseStatusCode\": 596,\n    \"matched\": false,\n    \"timestamp\": \"1962-01-19T02:26:38.507Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bed88137-8d60-4873-bab4-4583096c8e79",
+              "name": "Mock server not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-servers",
+                    ":mockServerId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mockServerId",
+                      "description": "(Required) Unique identifier of the mock server."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mock.insomnia.rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "01683880-a3b5-409c-be48-0a7d1d485eb1",
+    "name": "Insomnia Mock Server Mock Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI specifications or custom route configurations. This enables frontend and backend teams to develop and test against realistic API behavior before the actual implementation is complete. Insomnia supports both cloud-hosted and self-hosted mock server deployments.\n\nContact Support:\n Name: Kong Inc",
+      "type": "text/plain"
+    }
+  }
+}

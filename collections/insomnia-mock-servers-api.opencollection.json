@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Insomnia Mock Server Mock Logs Mock Servers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mock Servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Insomnia List Mock Servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mock.insomnia.rest/mock-servers",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query",
+                "description": "Filter mock servers by workspace identifier."
+              }
+            ]
+          },
+          "docs": "Returns a list of all mock servers configured within the current workspace, including their status, associated OpenAPI specification, and endpoint URL."
+        },
+        {
+          "info": {
+            "name": "Insomnia Create Mock Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://mock.insomnia.rest/mock-servers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new mock server from an OpenAPI specification or custom route definitions. The mock server begins serving responses immediately after creation."
+        },
+        {
+          "info": {
+            "name": "Insomnia Get Mock Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://mock.insomnia.rest/mock-servers/:mockServerId",
+            "params": [
+              {
+                "name": "mockServerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock server."
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific mock server by its identifier."
+        },
+        {
+          "info": {
+            "name": "Insomnia Update Mock Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://mock.insomnia.rest/mock-servers/:mockServerId",
+            "params": [
+              {
+                "name": "mockServerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock server."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing mock server configuration, including its associated specification and route behaviors."
+        },
+        {
+          "info": {
+            "name": "Insomnia Delete Mock Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://mock.insomnia.rest/mock-servers/:mockServerId",
+            "params": [
+              {
+                "name": "mockServerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the mock server."
+              }
+            ]
+          },
+          "docs": "Deletes a mock server and stops serving all associated mock endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
