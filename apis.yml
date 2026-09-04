@@ -114,17 +114,18 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/insomnia.png
 access: 3rd-Party
 created: '2025-01-08'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 description: >-
   Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
   HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD integration,
