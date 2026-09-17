@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Insomnia Mock Server Mock Logs API
   description: The Insomnia Mock Server API allows developers to create, manage, and interact with mock servers powered by Insomnia (Kong). Mock servers simulate API endpoints by returning predefined responses based on OpenAPI specifications or custom route configurations. This enables frontend and backend teams to develop and test against realistic API behavior before the actual implementation is complete. Insomnia supports both cloud-hosted and self-hosted mock server deployments.
@@ -55,6 +55,14 @@ paths:
         '404':
           description: Mock server not found.
 components:
+  parameters:
+    mockServerId:
+      name: mockServerId
+      in: path
+      required: true
+      description: Unique identifier of the mock server.
+      schema:
+        type: string
   schemas:
     MockLogEntry:
       type: object
@@ -89,14 +97,6 @@ components:
           type: string
           format: date-time
           description: Timestamp when the request was received.
-  parameters:
-    mockServerId:
-      name: mockServerId
-      in: path
-      required: true
-      description: Unique identifier of the mock server.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

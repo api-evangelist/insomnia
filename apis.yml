@@ -4,6 +4,12 @@ apis:
 - aid: insomnia:insomnia
   name: Insomnia
   tags:
+  - API Client
+  - API Design
+  - Debugging
+  - Mocking
+  - Testing
+  tags_raw:
   - API Clients
   - API Design
   - Debugging
@@ -167,3 +173,5 @@ common:
 - name: Kong Inc
   url: https://konghq.com/products/kong-insomnia
   type: Website
+x-parent: kong
+x-relationship: product
