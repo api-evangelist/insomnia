@@ -174,4 +174,5 @@ common:
   url: https://konghq.com/products/kong-insomnia
   type: Website
 x-parent: kong
-x-relationship: product
+x-relationship: acquisition
+x-acquired: 2019
