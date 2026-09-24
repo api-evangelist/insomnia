@@ -27,8 +27,6 @@ apis:
     type: CLIReference
   - url: https://docs.insomnia.rest/insomnia/api-mocking/
     type: MockServer
-  - url: graphql/insomnia-graphql.md
-    type: GraphQL
   description: >-
     Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging,
     and testing HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso
