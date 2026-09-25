@@ -141,6 +141,8 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.23'
 common:
+- type: VendorFacets
+  url: vendor-facets/insomnia-vendor-facets.yml
 - type: AgenticAccess
   url: agentic-access/insomnia-agentic-access.yml
 - type: DomainSecurity
