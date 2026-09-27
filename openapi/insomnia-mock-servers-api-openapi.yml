@@ -125,15 +125,26 @@ paths:
         '404':
           description: Mock server not found.
 components:
-  parameters:
-    mockServerId:
-      name: mockServerId
-      in: path
-      required: true
-      description: Unique identifier of the mock server.
-      schema:
-        type: string
   schemas:
+    MockServerCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable name for the new mock server.
+        workspaceId:
+          type: string
+          description: Identifier of the workspace to create the mock server in.
+        specification:
+          type: string
+          description: OpenAPI specification content (YAML or JSON) to generate mock routes from.
+        useExamples:
+          type: boolean
+          default: true
+          description: Whether to use example values from the OpenAPI spec in responses.
+      required:
+      - name
+      - workspaceId
     MockServerUpdate:
       type: object
       properties:
@@ -189,25 +200,14 @@ components:
       - workspaceId
       - url
       - status
-    MockServerCreate:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Human-readable name for the new mock server.
-        workspaceId:
-          type: string
-          description: Identifier of the workspace to create the mock server in.
-        specification:
-          type: string
-          description: OpenAPI specification content (YAML or JSON) to generate mock routes from.
-        useExamples:
-          type: boolean
-          default: true
-          description: Whether to use example values from the OpenAPI spec in responses.
-      required:
-      - name
-      - workspaceId
+  parameters:
+    mockServerId:
+      name: mockServerId
+      in: path
+      required: true
+      description: Unique identifier of the mock server.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

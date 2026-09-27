@@ -98,19 +98,25 @@ tags:
 - Mocking
 - Platform
 - Testing
+- OpenAPI
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: unknown
+  model: open-core
+  license: Apache-2.0
+  license_evidence:
+    repo: kong/insomnia
+    spdx: Apache-2.0
+    stars: 40028
+  open_source: true
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -170,8 +176,8 @@ common:
 - name: Inso CLI
   url: https://docs.insomnia.rest/inso-cli/introduction/
   type: CLI
-- name: Kong Inc
-  url: https://konghq.com/products/kong-insomnia
+- name: Website
+  url: https://insomnia.rest/
   type: Website
 x-parent: kong
 x-relationship: acquisition

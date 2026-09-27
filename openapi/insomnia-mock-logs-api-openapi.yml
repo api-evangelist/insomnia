@@ -55,14 +55,6 @@ paths:
         '404':
           description: Mock server not found.
 components:
-  parameters:
-    mockServerId:
-      name: mockServerId
-      in: path
-      required: true
-      description: Unique identifier of the mock server.
-      schema:
-        type: string
   schemas:
     MockLogEntry:
       type: object
@@ -97,6 +89,14 @@ components:
           type: string
           format: date-time
           description: Timestamp when the request was received.
+  parameters:
+    mockServerId:
+      name: mockServerId
+      in: path
+      required: true
+      description: Unique identifier of the mock server.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
