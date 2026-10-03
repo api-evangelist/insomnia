@@ -182,3 +182,10 @@ common:
 x-parent: kong
 x-relationship: acquisition
 x-acquired: 2019
+x-correction-request:
+  requested: '2026-10-03'
+  source:
+  - apis.io Influence-tier request queue (kinlane-test-influence)
+  request: 'Influence-tier fact correction 9afdde23 (2026-09-24): proposed {"url": "https://insomnia.rest/"} (the
+    proposed "url" means the company Website; our apis.yml url stays our own index URL). Verify against the provider''s
+    own site; use catalog industry/tag vocabulary.'
