@@ -145,18 +145,6 @@ components:
       required:
       - name
       - workspaceId
-    MockServerUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Updated name for the mock server.
-        specification:
-          type: string
-          description: Updated OpenAPI specification content.
-        useExamples:
-          type: boolean
-          description: Whether to use example values from the spec.
     MockServer:
       type: object
       properties:
@@ -200,6 +188,18 @@ components:
       - workspaceId
       - url
       - status
+    MockServerUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Updated name for the mock server.
+        specification:
+          type: string
+          description: Updated OpenAPI specification content.
+        useExamples:
+          type: boolean
+          description: Whether to use example values from the spec.
   parameters:
     mockServerId:
       name: mockServerId
