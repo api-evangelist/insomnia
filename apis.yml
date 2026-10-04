@@ -1,5 +1,149 @@
 aid: insomnia
+
 url: https://raw.githubusercontent.com/api-evangelist/insomnia/refs/heads/main/apis.yml
+
+name: Insomnia
+
+tags:
+- API Design
+- CLI
+- Clients
+- Developer Tools
+- Mocking
+- Platform
+- Testing
+- OpenAPI
+
+deliveryModel:
+  model: open-core
+  license: Apache-2.0
+  license_evidence:
+    repo: kong/insomnia
+    spdx: Apache-2.0
+    stars: 40028
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  - repository-license
+  generated: '2026-09-25'
+  method: derived
+
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: medium
+  source:
+  - plans
+  - authentication
+  - security
+  generated: '2026-09-03'
+  method: derived
+
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/insomnia.png
+
+access: 3rd-Party
+
+created: '2025-01-08'
+
+modified: '2026-05-19'
+
+position: Consuming
+
+description: >-
+  Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
+  HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD integration,
+  cloud-hosted and self-hosted mock servers, OpenAPI spec design tools, and collaborative features with cloud sync,
+  local vault, and Git storage options.
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
+specificationVersion: '0.23'
+
+common:
+- type: FinOps
+  url: finops/insomnia-finops.yml
+- type: RateLimits
+  url: rate-limits/insomnia-rate-limits.yml
+- type: Plans
+  url: plans/insomnia-plans-pricing.yml
+- type: Spectral
+  url: rules/insomnia-rules.yml
+- type: Spectral
+  url: rules/insomnia-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/insomnia-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/insomnia-data-model.yml
+- type: CLI
+  url: cli/insomnia-cli.yml
+- type: ChangeLog
+  url: changelog/insomnia-changelog.yml
+- type: ErrorCatalog
+  url: errors/insomnia-problem-types.yml
+- type: Conformance
+  url: conformance/insomnia-conformance.yml
+- type: Hosts
+  url: hosts/insomnia-hosts.yml
+- type: Vendors
+  url: vendors/insomnia-vendors.yml
+- type: TermsOfService
+  url: https://insomnia.rest/terms
+- type: Support
+  url: https://insomnia.rest/support
+- type: PrivacyPolicy
+  url: https://insomnia.rest/privacy
+- type: Login
+  url: https://app.insomnia.rest/app/login/
+- type: GettingStarted
+  url: https://developer.konghq.com/insomnia/enterprise-onboarding
+- type: DeveloperPortal
+  url: https://developer.konghq.com/insomnia/ai-in-insomnia/
+- type: VendorFacets
+  url: vendor-facets/insomnia-vendor-facets.yml
+- type: AgenticAccess
+  url: agentic-access/insomnia-agentic-access.yml
+- type: DomainSecurity
+  url: security/insomnia-domain-security.yml
+- type: Authentication
+  url: authentication/insomnia-authentication.yml
+- name: Documentation
+  url: https://docs.insomnia.rest/
+  type: Documentation
+- name: GitHub Repository
+  url: https://github.com/Kong/insomnia
+  type: GitHubRepository
+- name: Plugins
+  url: https://insomnia.rest/plugins
+  type: Plugins
+- name: Changelog
+  url: https://insomnia.rest/changelog
+  type: ChangeLog
+- name: Blog
+  url: https://konghq.com/blog
+  type: Blog
+- name: Pricing
+  url: https://insomnia.rest/pricing
+  type: Pricing
+- name: Inso CLI
+  url: https://docs.insomnia.rest/inso-cli/introduction/
+  type: CLI
+- name: Website
+  url: https://insomnia.rest/
+  type: Website
+
 apis:
 - aid: insomnia:insomnia
   name: Insomnia
@@ -89,99 +233,15 @@ apis:
     url: json-schema/environment.json
   - type: JSONLD
     url: json-ld/insomnia-context.jsonld
-name: Insomnia
-tags:
-- API Design
-- CLI
-- Clients
-- Developer Tools
-- Mocking
-- Platform
-- Testing
-- OpenAPI
+
 type: Index
-deliveryModel:
-  model: open-core
-  license: Apache-2.0
-  license_evidence:
-    repo: kong/insomnia
-    spdx: Apache-2.0
-    stars: 40028
-  open_source: true
-  commercial: true
-  callable_host: true
-  label: Open core · an OSS project plus a commercial hosted product
-  confidence: medium
-  source:
-  - openapi
-  - pricing
-  - repository-license
-  generated: '2026-09-25'
-  method: derived
-accessModel:
-  pricing: freemium
-  onboarding: self-serve
-  trial: false
-  try_now: true
-  public: false
-  label: Freemium · Self-serve signup
-  confidence: medium
-  source:
-  - plans
-  - authentication
-  - security
-  generated: '2026-09-03'
-  method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/insomnia.png
-access: 3rd-Party
-created: '2025-01-08'
-modified: '2026-05-19'
-position: Consuming
-description: >-
-  Insomnia is an open-source, cross-platform API development platform by Kong for designing, debugging, and testing
-  HTTP, REST, GraphQL, gRPC, SOAP, WebSockets, SSE, and Socket.IO APIs. It includes an Inso CLI for CI/CD integration,
-  cloud-hosted and self-hosted mock servers, OpenAPI spec design tools, and collaborative features with cloud sync,
-  local vault, and Git storage options.
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-specificationVersion: '0.23'
-common:
-- type: VendorFacets
-  url: vendor-facets/insomnia-vendor-facets.yml
-- type: AgenticAccess
-  url: agentic-access/insomnia-agentic-access.yml
-- type: DomainSecurity
-  url: security/insomnia-domain-security.yml
-- type: Authentication
-  url: authentication/insomnia-authentication.yml
-- name: Documentation
-  url: https://docs.insomnia.rest/
-  type: Documentation
-- name: GitHub Repository
-  url: https://github.com/Kong/insomnia
-  type: GitHubRepository
-- name: Plugins
-  url: https://insomnia.rest/plugins
-  type: Plugins
-- name: Changelog
-  url: https://insomnia.rest/changelog
-  type: ChangeLog
-- name: Blog
-  url: https://konghq.com/blog
-  type: Blog
-- name: Pricing
-  url: https://insomnia.rest/pricing
-  type: Pricing
-- name: Inso CLI
-  url: https://docs.insomnia.rest/inso-cli/introduction/
-  type: CLI
-- name: Website
-  url: https://insomnia.rest/
-  type: Website
+
 x-parent: kong
+
 x-relationship: acquisition
+
 x-acquired: 2019
+
 x-correction-request:
   requested: '2026-10-03'
   source:
@@ -189,3 +249,24 @@ x-correction-request:
   request: 'Influence-tier fact correction 9afdde23 (2026-09-24): proposed {"url": "https://insomnia.rest/"} (the
     proposed "url" means the company Website; our apis.yml url stays our own index URL). Verify against the provider''s
     own site; use catalog industry/tag vocabulary.'
+
+x-coverage:
+  state: unreadable
+  reason: no-machine-readable-spec
+  detail: The developer portal at https://developer.konghq.com/insomnia/ provides documentation but no publicly accessible OpenAPI or other machine‑readable contract.
+  evidence:
+    - url: https://developer.konghq.com/insomnia/
+      status: 200
+  checked: '2026-10-04'
+  requested: '2026-10-03'
+  source:
+  - apis.io Influence-tier request queue (kinlane-test-influence)
+  request: 'Influence-tier fact correction 9afdde23 (2026-09-24): proposed {"url": "https://insomnia.rest/"} (the
+    proposed "url" means the company Website; our apis.yml url stays our own index URL). Verify against the provider''s
+    own site; use catalog industry/tag vocabulary.'
+x-enrichment:
+  date: '2026-10-04'
+  status: enriched
+  artifacts_added: 14
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

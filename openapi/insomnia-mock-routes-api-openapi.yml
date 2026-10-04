@@ -105,7 +105,62 @@ paths:
         '404':
           description: Mock route or server not found.
 components:
+  parameters:
+    routeId:
+      name: routeId
+      in: path
+      required: true
+      description: Unique identifier of the mock route.
+      schema:
+        type: string
+    mockServerId:
+      name: mockServerId
+      in: path
+      required: true
+      description: Unique identifier of the mock server.
+      schema:
+        type: string
   schemas:
+    MockRouteCreate:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+          - HEAD
+          - OPTIONS
+          description: HTTP method this route responds to.
+        path:
+          type: string
+          description: URL path pattern for the route.
+        statusCode:
+          type: integer
+          description: HTTP status code returned by this route.
+        responseHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          description: Response headers returned by this route.
+        responseBody:
+          type: string
+          description: Response body content.
+        contentType:
+          type: string
+          default: application/json
+          description: Content-Type of the response.
+        delay:
+          type: integer
+          description: Simulated response delay in milliseconds.
+          default: 0
+      required:
+      - method
+      - path
+      - statusCode
     MockRoute:
       type: object
       properties:
@@ -153,61 +208,6 @@ components:
       - method
       - path
       - statusCode
-    MockRouteCreate:
-      type: object
-      properties:
-        method:
-          type: string
-          enum:
-          - GET
-          - POST
-          - PUT
-          - PATCH
-          - DELETE
-          - HEAD
-          - OPTIONS
-          description: HTTP method this route responds to.
-        path:
-          type: string
-          description: URL path pattern for the route.
-        statusCode:
-          type: integer
-          description: HTTP status code returned by this route.
-        responseHeaders:
-          type: object
-          additionalProperties:
-            type: string
-          description: Response headers returned by this route.
-        responseBody:
-          type: string
-          description: Response body content.
-        contentType:
-          type: string
-          default: application/json
-          description: Content-Type of the response.
-        delay:
-          type: integer
-          description: Simulated response delay in milliseconds.
-          default: 0
-      required:
-      - method
-      - path
-      - statusCode
-  parameters:
-    mockServerId:
-      name: mockServerId
-      in: path
-      required: true
-      description: Unique identifier of the mock server.
-      schema:
-        type: string
-    routeId:
-      name: routeId
-      in: path
-      required: true
-      description: Unique identifier of the mock route.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
