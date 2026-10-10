@@ -1,0 +1,33 @@
+generated: '2026-10-05'
+method: probed
+source: https://insomnia.rest/privacy
+signals:
+  data_subject_request:
+    - quote: "You have the right to know what we know about you and to see how that data is handled. You may request a screenshot of what we can see about you in our back office systems."
+      url: https://insomnia.rest/privacy
+      section: "Your Right to Know to What We Know"
+      note: Right to access personal data.
+    - quote: "Account owners have the right to instruct us to remove data permanently from our systems."
+      url: https://insomnia.rest/privacy
+      section: "Your Right to Have Your Data Erased"
+      note: Right to erasure.
+  data_retention:
+    - quote: "We retain the minimum amount of Service Data to operate and improve our Services."
+      url: https://insomnia.rest/privacy
+      section: "Service Data"
+      note: Minimal data retention policy.
+  incident_notification:
+    - quote: "If the confidentiality of customer data is breached, we will publicly disclose the nature of the risk and provide a transparent account of the events without undue delay."
+      url: https://insomnia.rest/privacy
+      section: "Breach Notification"
+      note: Breach notification commitment.
+  subprocessors:
+    - quote: "Your Service Data are held by third party data processors, who provide us with hosting and other infrastructure services. Processor: Auth0: User account login and data; Amazon Web Services: User‑submitted optional profile images for user identification; ..."
+      url: https://insomnia.rest/privacy
+      section: "Third‑Party Data Processors"
+      note: List of subprocessors.
+  age_assurance:
+    - quote: "Those under the age of 16 may not use the services without the consent or authorization of their parent or legal custodian."
+      url: https://insomnia.rest/privacy
+      section: "Consent for Underage Enrollment"
+      note: Age restriction.

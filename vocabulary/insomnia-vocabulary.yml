@@ -1,0 +1,60 @@
+generated: '2026-10-10'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/insomnia-mock-logs-api-openapi.yml
+- openapi/insomnia-mock-routes-api-openapi.yml
+- openapi/insomnia-mock-servers-api-openapi.yml
+vocabulary:
+  name: Insomnia Domain Vocabulary
+  description: 'Terms declared by Insomnia''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-10'
+  terms:
+  - term: Mock Logs
+    definition: View request logs for mock servers.
+    tags:
+    - Resource Group
+    source: openapi/insomnia-mock-logs-api-openapi.yml
+  - term: Mock Routes
+    definition: Manage individual routes within a mock server.
+    tags:
+    - Resource Group
+    source: openapi/insomnia-mock-routes-api-openapi.yml
+  - term: Mock Servers
+    definition: Manage mock server instances.
+    tags:
+    - Resource Group
+    source: openapi/insomnia-mock-servers-api-openapi.yml
+  - term: MockLogEntry
+    definition: 'Object declared by the contract with fields: _id, mockServerId, routeId, requestMethod, requestPath, requestHeaders, responseStatusCode,
+      matched, timestamp.'
+    tags:
+    - Object
+    source: openapi/insomnia-mock-logs-api-openapi.yml#/components/schemas/MockLogEntry
+  - term: MockRouteCreate
+    definition: 'Object declared by the contract with fields: method, path, statusCode, responseHeaders, responseBody, contentType, delay.'
+    tags:
+    - Object
+    source: openapi/insomnia-mock-routes-api-openapi.yml#/components/schemas/MockRouteCreate
+  - term: MockRoute
+    definition: 'Object declared by the contract with fields: _id, mockServerId, method, path, statusCode, responseHeaders, responseBody, contentType,
+      delay.'
+    tags:
+    - Object
+    source: openapi/insomnia-mock-routes-api-openapi.yml#/components/schemas/MockRoute
+  - term: MockServerUpdate
+    definition: 'Object declared by the contract with fields: name, specification, useExamples.'
+    tags:
+    - Object
+    source: openapi/insomnia-mock-servers-api-openapi.yml#/components/schemas/MockServerUpdate
+  - term: MockServerCreate
+    definition: 'Object declared by the contract with fields: name, workspaceId, specification, useExamples.'
+    tags:
+    - Object
+    source: openapi/insomnia-mock-servers-api-openapi.yml#/components/schemas/MockServerCreate
+  - term: MockServer
+    definition: 'Object declared by the contract with fields: _id, name, workspaceId, url, status, specificationSource, created, modified.'
+    tags:
+    - Object
+    source: openapi/insomnia-mock-servers-api-openapi.yml#/components/schemas/MockServer

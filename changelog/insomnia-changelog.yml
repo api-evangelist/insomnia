@@ -1,0 +1,20 @@
+generated: '2026-10-10'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://developer.konghq.com/ai-gateway/changelog.md
+sources:
+- https://developer.konghq.com/ai-gateway/changelog.md
+- https://developer.konghq.com/ai-gateway/v2-migration-guide.md
+- https://developer.konghq.com/dev-portal/v2-migration.md
+- https://developer.konghq.com/event-gateway/changelog.md
+entries:
+- breaking: true
+  highlights:
+  - 'The FIPS artifact serves an explicit TLS 1.2 cipher list: four ECDHE suites with AES-GCM.'
+  - It replaces the OpenSSL FIPS alias, which resolves to 28 suites and also admits static RSA key transport and SSLv3-era suites.
+  - The FIPS artifacts are renamed to state their certification level.
+  - The `kong-ai-gateway-fips` package becomes `kong-ai-gateway-fips-140-3` and the `<version>-<distro>-fips` image becomes `<version>-<distro>-fips-140-3`.
+  date: '2026-09-30'
+current_version: 2.2.0
+note: Versioning scheme follows semantic versioning (major.minor.patch).
+docs: https://developer.konghq.com/ai-gateway/changelog.md

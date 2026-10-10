@@ -1,0 +1,29 @@
+generated: '2026-10-04'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://developer.konghq.com/mesh/get-started/universal/zero-trust-security.md
+sources:
+- https://developer.konghq.com/mesh/get-started/universal/zero-trust-security.md
+- https://developer.konghq.com/ai-gateway/fips-support.md
+- https://developer.konghq.com/dev-portal/security-settings.md
+- https://developer.konghq.com/insomnia/data-security.md
+standards:
+- id: fapi
+  conforms: false
+  evidence: The FIPS AI Gateway package is FIPS 140-3 compliant.
+- id: openapi-3.2
+  conforms: true
+  evidence: the document declares 3.2.0
+- id: oauth2
+  conforms: false
+  evidence: 'securitySchemes: bearerAuth (http)'
+- id: rfc9457
+  conforms: false
+  evidence: no response declares application/problem+json
+- id: idempotency
+  conforms: false
+  evidence: no idempotency key parameter on mutating operations
+- id: pagination
+  conforms: true
+  evidence: list operations take limit, offset
+docs: https://developer.konghq.com/mesh/get-started/universal/zero-trust-security.md

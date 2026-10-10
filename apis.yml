@@ -250,8 +250,15 @@ x-correction-request:
     proposed "url" means the company Website; our apis.yml url stays our own index URL). Verify against the provider''s
     own site; use catalog industry/tag vocabulary.'
 
-x-coverage:
+# x-coverage removed
   state: unreadable
+  reason: js-rendered-docs
+  detail: Documentation redirects to Kong developer site with HTML pages, no machine‑readable spec found.
+  evidence:
+    - url: https://insomnia.rest/docs
+      status: 200
+  checked: '2026-10-05'
+  state: readable
   reason: no-machine-readable-spec
   detail: The developer portal at https://developer.konghq.com/insomnia/ provides documentation but no publicly accessible OpenAPI or other machine‑readable contract.
   evidence:
@@ -265,8 +272,8 @@ x-coverage:
     proposed "url" means the company Website; our apis.yml url stays our own index URL). Verify against the provider''s
     own site; use catalog industry/tag vocabulary.'
 x-enrichment:
-  date: '2026-10-04'
+  date: '2026-10-10'
   status: enriched
-  artifacts_added: 14
+  artifacts_added: 19
   pass: modular-v1
   engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

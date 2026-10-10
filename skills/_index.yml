@@ -1,0 +1,13 @@
+generated: '2026-10-04'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/insomnia-mock-servers-api-openapi.yml
+skills:
+- file: skills/insomnia-manage-mock-routes.md
+  name: insomnia-manage-mock-routes
+  api: openapi/insomnia-mock-routes-api-openapi.yml
+  operations:
+  - listMockRoutes
+  - createMockRoute
+  - updateMockRoute
+  - deleteMockRoute

@@ -1,0 +1,33 @@
+generated: '2026-10-10'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/insomnia-mock-logs-api-openapi.yml
+- openapi/insomnia-mock-routes-api-openapi.yml
+- openapi/insomnia-mock-servers-api-openapi.yml
+format: custom
+envelope:
+  media_type: null
+  schema: null
+coverage:
+  operations: 10
+  statuses_declared: 3
+problems:
+- status: 400
+  title: Bad Request
+  description: Invalid request body.
+  operations: 3
+  media_types: []
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Unauthorized. Invalid or missing authentication.
+  operations: 2
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: Mock server not found.
+  operations: 8
+  media_types: []
+  schema: null

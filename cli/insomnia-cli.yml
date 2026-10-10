@@ -1,0 +1,38 @@
+generated: '2026-10-10'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://developer.konghq.com/ai-gateway/ai-clis.md
+sources:
+- https://developer.konghq.com/ai-gateway/ai-clis.md
+- https://developer.konghq.com/inso-cli.md
+- https://developer.konghq.com/inso-cli/configuration.md
+- https://developer.konghq.com/inso-cli/continuous-integration.md
+install:
+- method: Homebrew (macOS)
+  command: brew install inso
+- method: Download zip (macOS)
+  command: https://updates.insomnia.rest/downloads/mac/latest?app=com.insomnia.inso&channel=stable
+- method: Download zip (Windows)
+  command: https://updates.insomnia.rest/downloads/windows/latest?app=com.insomnia.inso&channel=stable
+- method: Download tar (Linux)
+  command: https://updates.insomnia.rest/downloads/linux/latest?app=com.insomnia.inso&channel=stable
+- method: Docker
+  command: docker pull kong/inso:latest
+commands:
+- group: run test
+  commands:
+  - inso run test "design document name" --env "environment name"
+- group: run collection
+  commands:
+  - inso run collection "collection name" --env "environment name"
+- group: lint spec
+  commands:
+  - inso lint spec "design document name"
+- group: export spec
+  commands:
+  - inso export spec "design document name" --output output.yaml
+- group: script
+  commands:
+  - inso script script-name --env environment-id
+binary: inso
+docs: https://developer.konghq.com/ai-gateway/ai-clis.md
