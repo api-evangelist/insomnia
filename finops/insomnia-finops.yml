@@ -6,6 +6,7 @@ specification: FinOps Framework
 specificationVersion: '1.0'
 provider: Insomnia
 providerId: insomnia
+name: Insomnia API FinOps
 publisherName: Insomnia
 serviceCategory: API
 created: '2026-05-04'
